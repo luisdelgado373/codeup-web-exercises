@@ -1,0 +1,59 @@
+main {
+    text-align: center;
+}
+h1 {
+    text-decoration: underline;
+    color: gold;
+}
+h2 {
+    text-decoration: underline;
+    color:goldenrod;
+}
+body {
+    font-family: "Comic Sans MS";
+    color: ghostwhite;
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url("http://wallpoper.com/images/00/31/33/51/black-background_00313351.jpg");
+    background-size: auto;
+    background-position: center;
+}
+img {
+    border: 3px solid black
+}
+ul {
+    list-style-type: circle;
+}
+table {
+    border: 2px solid black;
+}
+th {
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+td {
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+table {
+    background-color: lightgray;
+}
+a:link {
+    color:orange;
+}
+a:visited {
+    color:rebeccapurple;
+}
+a:hover {
+    color:red;
+}
+a:active {
+    color:green;
+}
