@@ -1,0 +1,26 @@
+#blue-box {
+    background-color: midnightblue;
+    height: 500px;
+    width: 250px;
+    float:left;
+}
+#white-box {
+    background-color: white;
+    height: 250px;
+    width: 600px;
+    float: left;
+}
+#red-box {
+    background-color: darkred;
+    height: 250px;
+    width: 600px;
+    float: left;
+
+}
+#star {
+    position: absolute;
+    left: 30px;
+    top: 150px;
+    width: 200px;
+    height: 200px;
+}
