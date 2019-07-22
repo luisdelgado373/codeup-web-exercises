@@ -1,0 +1,23 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: black;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+li {
+    padding: 1em;
+    color: #fff;
+    opacity: .5;
+}
+#dog {
+    opacity: 1;
+    text-align: center;
+}
+li:hover {
+    transition: 1s ease;
+    opacity: 1;
+}
