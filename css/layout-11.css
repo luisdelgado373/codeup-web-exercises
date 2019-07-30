@@ -1,0 +1,49 @@
+main {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    background: white;
+    grid-gap: 10px;
+    color: white;
+    font-family: "Comic Sans MS";
+    font-size: 2em;
+}
+body {
+    margin: 0;
+}
+.one {
+    grid-area: 1/1/2/5;
+    background: dodgerblue;
+}
+.two {
+    grid-area: 2/1/6/2;
+    background: dodgerblue;
+}
+.three {
+    grid-area: 2/2/3/5;
+    background: dodgerblue;
+}
+.four {
+    background: dodgerblue;
+}
+.five {
+    background: dodgerblue;
+}
+.six {
+    background: dodgerblue;
+}
+.seven {
+    background: dodgerblue;
+}
+.eight {
+    background: dodgerblue;
+}
+.nine {
+    background: dodgerblue;
+}
+.ten {
+    grid-area: 5/2/6/5;
+    background: dodgerblue;
+}

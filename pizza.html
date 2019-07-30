@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Big's Pizza</title>
 </head>
 <body>
+<header>
+    <h1>Big's Pizza</h1>
+</header>
+    <h3>Returning customer?</h3>
+
+    <form method="POST" action="https://request-inspector.glitch.me/">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text">
+    <br>
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password">
+    <br>
+    <br>
+
+    <p>
+        <h3>New Order</h3>
+    </p>
+
+    <label>Pizza Size:</label><br>
+    Small <input type="radio" name="Size" value="small"><br>
+    Medium <input type="radio" name="Size" value="medium"><br>
+    Large <input type="radio" name="Size" value="large"><br>
+    <br>
+
+    <label>Sauce:</label>
+    <select name="Sauce">
+        <option value="none">No Sauce</option>
+        <option value="light">Light Sauce</option>
+        <option value="normal" selected>Normal Sauce</option>
+        <option value="extra">Extra Sauce</option>
+    </select>
+    <br>
+    <br>
+
+    <label>Cheese:</label>
+    <select name="Cheese">
+        <option value="light">Light Cheese</option>
+        <option value="normal" selected>Normal Cheese</option>
+        <option value="extra">Extra Cheese</option>
+    </select>
+    <br>
+    <br>
+
+    <label>Toppings:</label><br>
+    <input name="toppings" value="pepperoni" type="checkbox" >Pepperoni
+    <input name="toppings" value="jalapenos" type="checkbox" >Jalapenos
+    <input name="toppings" value="sausage" type="checkbox" >Sausage
+    <input name="toppings" value="ham" type="checkbox" >Ham
+    <input name="toppings" value="pineapple" type="checkbox" >Pineapple
+    <!--
+    <select multiple>
+        <option value="pepperoni">Pepperoni</option>
+        <option value="jalapenos">Jalapenos</option>
+        <option value="sausage">Sausage</option>
+        <option value="ham">Ham</option>
+    </select> -->
+    <br>
+    <br>
+
+    <button type="submit">Submit my order</button>
+</form>
 
 </body>
 </html>

@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+main {
+    margin-top: 2em;
+    padding: .2em;
+    background: black;
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+}
+main div {
+    color: black;
+    background: grey;
+    border: 4px solid black;
+}
+.red {
+    grid-area: 1/3/4/9;
+    background: red;
+}
+.red2 {
+    grid-area: 8/1/9/3;
+    background: red;
+}
+.yellow {
+    grid-area: 3/1/6/3;
+    background: gold;
+}
+.yellow2 {
+    grid-area: 6/5/8/9;
+    background: gold;
+}
+.blue {
+    grid-area: 1/1/3/3;
+    background: royalblue;
+}
+.blue2 {
+    grid-area: 8/3/9/9;
+    background: royalblue;
+}
+.white {
+    grid-area: 6/1/8/3;
+    background: white;
+}
+.white2 {
+    grid-area: 4/5/6/9;
+    background: white;
+}
+.white3 {
+    grid-area: 4/3/8/5;
+    background: white;
+}

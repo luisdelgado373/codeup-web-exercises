@@ -10,6 +10,7 @@
     <title>Lease Application</title>
 </head>
 <body>
+<main>
 <header>
     <section>
 <h3>Texas Association of Realtors™</h3>
@@ -19,9 +20,37 @@
 <h4>Each occupant and co-applicant 18 years or older must submit a separate application</h4>
     </section>
 </header>
+</main>
 <hr>
 <section>
-
+    <label for="property_address">Property Address:</label>
+    <input id="property_address" name="property_address" type="text"><br>
+    <label for="movein_date">Anticipated Move-in Date:</label>
+    <input placeholder="MM/DD/YY" id="movein_date" name="movein_date" type="text">
+    <label for="monthly_rent">Monthly Rent:$</label>
+    <input id="monthly_rent" name="monthly_rent" type="text">
+    <label for="deposit">Security Deposit:$</label>
+    <input id="deposit" name="deposit" type="text">
+    <br>
+    <br>
 </section>
+    <label>Applicant was referred to Landlord by:</label><br>
+<input name="referred" value="true" type="checkbox">Real estate agent:
+<input placeholder="Enter name & phone number" name="referred" type="text">
+<input name="referred" value="true" type="checkbox">Newspaper
+<input name="referred" value="true" type="checkbox">Sign
+<input name="referred" value="true" type="checkbox">Internet
+<input name="referred" value="true" type="checkbox">Other
+<input placeholder="Other reason" name="referred" type="text">
+<br>
+<br>
+<label for="applicant">Applicant's name:</label>
+<input placeholder="(First,Middle,Last)" id="applicant" name="name" type="text"><br>
+<label for="co-applicant">Is there a co-applicant?</label>
+<select id="co-applicant" name="co-applicant">
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+</select>
+<h5><em>*If yes, co-applicant must submit a separate application</em></h5>
 </body>
 </html>

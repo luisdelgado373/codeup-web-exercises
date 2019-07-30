@@ -1,0 +1,45 @@
+body {
+    background-color: gray;
+    margin: 0;
+    font-family: "Work Sans";
+}
+nav {
+    background-color: rgb(193,193,193);
+    height: 4.25em;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    height: 4.25em;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+}
+nav li {
+    margin: .5em;
+}
+nav a:hover {
+    color: blue;
+}
+nav li:nth-child(6) {
+    margin-left: auto;
+}
+li:not(#logo) {
+    z-index: 1;
+}
+#logo {
+    font-family: "Montserrat";
+    font-size: 3em;
+    margin: 0;
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+}
+#logo a{
+    margin: auto;
+}
