@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Function Exercise</title>
+</head>
+<body>
+
+<!--// Write a function, isFive, that takes in an input and returns the boolean value true if the passed argument is
+the number 5 or the string "5". Return false otherwise.-->
+<!--// Write a function, isShortWord, that takes in a string and returns the boolean value true if the passed argument
+is shorter than 5 characters. Return false otherwise.-->
+
+<!--// Write a function, isSameLength, that takes in two string inputs and returns the boolean value true if the passed
+arguments are the same length. Return false otherwise.-->
+
+<!--// Write a function, getSmallerSegment, that takes in a string and a number input. The function should return a
+substring of the first argument that is as many characters long as the second argument in lowercase-->
+<script>
+    function isFive(five) {
+       return five === 5 || five === "5";
+    }
+    console.log(isFive(5));
+
+    function isShortWord(five) {
+        return five.length <5;
+    }
+        console.log(isShortWord("dog"));
+
+    function isSameLength(string, string2) {
+        return string.length === string2.length;
+    }
+        console.log(isSameLength("dog", "cats"));
+
+    function getSmallerSegment(string, number) {
+        return string.substring(0, number).toLowerCase();
+    }
+        console.log(getSmallerSegment("biggerWORD", 8));
+</script>
+</body>
+</html>
