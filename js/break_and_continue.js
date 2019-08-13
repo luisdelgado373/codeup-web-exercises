@@ -1,7 +1,7 @@
 while(true) {
     var userInput = prompt("Enter an odd number between 1 and 50.");
-    if(userInput % 2 === 1) {
-    break;
+    if(userInput % 2 !== 0 && userInput > 0 && userInput <51) {
+        break;
     }
 }
 
