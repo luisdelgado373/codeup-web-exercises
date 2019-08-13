@@ -1,5 +1,11 @@
-var oddNumber = prompt("Enter an odd number between 1 and 50.");
+while(true) {
+    var userInput = prompt("Enter an odd number between 1 and 50.");
+    if(userInput % 2 === 1) {
+    break;
+    }
+}
 
+var oddNumber = prompt("Enter an odd number between 1 and 50.");
 for (var i = 1; i <= 50; ++i) {
     if (i % 2 === 0) {
         continue;
