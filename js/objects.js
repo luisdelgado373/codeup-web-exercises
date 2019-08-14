@@ -29,8 +29,8 @@ var person = {
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
 person.sayHello = function () {
-    return "Hello from " + person.firstName + " " + person.lastName + "!";
-}
+    return "Hello from " + this.firstName + " " + this.lastName + "!";
+};
     console.log(person.sayHello());
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -55,10 +55,10 @@ person.sayHello = function () {
     if(shopper.amount > 200) {
     var discount = shopper.amount * .12;
     var priceAfter = shopper.amount - discount;
-        console.log(shopper.name + " qualifies for the discount! His previous price was $" + shopper.amount +
-            ", which brings his discount to $" + discount + ". His new balance is $" + priceAfter + "!");
+        console.log(shopper.name + " qualifies for the discount! His previous price was $" + shopper.amount.toFixed(2) +
+            ", which brings his discount to $" + discount.toFixed(2) + ". His new balance is $" + priceAfter.toFixed(2) + "!");
     } else {
-        console.log(shopper.name + " does not qualify for the discount, his total was $" + shopper.amount +  ".");
+        console.log(shopper.name + " does not qualify for the discount, his total was $" + shopper.amount.toFixed(2) +  ".");
     }
 });
     /** TODO:
@@ -74,11 +74,11 @@ person.sayHello = function () {
      * > console.log(books[0].author.lastName) // "Adams"
      */
 var books = [
-        {author:{firstName: "Dr.", lastName: "Seuss"}, title: "The Cat in the Hat"},
-        {author:{firstName: "Dr.", lastName: "Seuss"}, title: "The Lorax"},
-        {author:{firstName: "Dr.", lastName: "Seuss"}, title: "Horton Hears a Who!"},
-        {author:{firstName: "Dr.", lastName: "Seuss"}, title: "How the Grinch Stole Christmas"},
-        {author:{firstName: "Dr.", lastName: "Seuss"}, title: "Oh, the Places You'll Go!"}
+        {author:{firstName: "Theodore", lastName: "Seuss"}, title: "The Cat in the Hat"},
+        {author:{firstName: "Theodore", lastName: "Seuss"}, title: "The Lorax"},
+        {author:{firstName: "Theodore", lastName: "Seuss"}, title: "Horton Hears a Who!"},
+        {author:{firstName: "Theodore", lastName: "Seuss"}, title: "How the Grinch Stole Christmas"},
+        {author:{firstName: "Theodore", lastName: "Seuss"}, title: "Oh, the Places You'll Go!"}
     ];
 
     /**
@@ -107,8 +107,9 @@ var books = [
      */
 books.forEach(function(book) {
     console.log("Book #" + (books.indexOf(book) + 1));
-    console.log("Author: " + book.author.firstName + book.author.lastName);
+    console.log("Author: " + book.author.firstName + " " + book.author.lastName);
     console.log("Title: " + book.title);
+    console.log("---");
 });
     /**
      * Bonus:
@@ -124,11 +125,11 @@ function createBook(title, first, last) {
             lastName: last
         };
     }
-        console.log(createBook("The Cat in the Hat","Dr.", "Seuss"));
-        console.log(createBook("The Lorax","Dr.", "Seuss"));
-        console.log(createBook("Horton Hears a Who!","Dr.", "Seuss"));
-        console.log(createBook("How the Grinch Stole Christmas","Dr.", "Seuss"));
-        console.log(createBook("Oh, the Places You'll Go!","Dr.", "Seuss"));
+        console.log(createBook("The Cat in the Hat","Theodore", "Seuss"));
+        console.log(createBook("The Lorax","Theodore", "Seuss"));
+        console.log(createBook("Horton Hears a Who!","Theodore", "Seuss"));
+        console.log(createBook("How the Grinch Stole Christmas","Theodore", "Seuss"));
+        console.log(createBook("Oh, the Places You'll Go!","Theodore", "Seuss"));
 
     /** - Create a function named `showBookInfo` that accepts a book object and
      *   outputs the information described above. Refactor your loop to use your
@@ -140,7 +141,7 @@ function showBookInfo(someBook) {
     }
 
 var testBook = (
-    {author:{firstName: "Dr.", lastName: "Seuss"}, title: "The Cat in the Hat"}
+    {author:{firstName: "Theodore", lastName: "Seuss"}, title: "The Cat in the Hat"}
 );
     showBookInfo(testBook);
 })();
