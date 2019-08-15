@@ -9,15 +9,15 @@
 
             // TODO: complete this method
             // hint: area = pi * radius^2
-            return  Math.PI * Math.pow(circle.radius, 2);
+            return  Math.PI * Math.pow(this.radius, 2);
             // TODO: return the proper value
         },
         logInfo: function (doRounding) {
             // TODO: complete this method.
     if (doRounding) {
-        var area = Math.round(circle.getArea());
+        var area = Math.round(this.getArea());
     } else {
-        var area = circle.getArea();
+        var area = this.getArea();
     }
         // If doRounding is true, round the result to the nearest integer.
         // Otherwise, output the complete value
