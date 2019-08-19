@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Maps API</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+<div id='map'></div>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src ="js/keys.js"></script>
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 5,
+        center: [-80.1300, 25.7907]
+    });
+//     setTimeout(function() {
+//         geocode("7401 Collins Ave #2713, Miami Beach, FL 33141", mapboxToken).then(function(result) {
+//             console.log(result);
+//             map.setCenter(result);
+//             map.setZoom(18);
+//         });
+//     },5000);
+//     setTimeout(function() {
+//         var marker = new mapboxgl.Marker()
+//             .setLngLat([-80.120842, 25.859669])
+//             .addTo(map);
+//         var burgersPopup = new mapboxgl.Popup()
+//             .setHTML("<p>Burgers & Shakes</p>");
+//         marker.setPopup(burgersPopup);
+//     },7000);
+//
+// // SECOND RESTAURANT
+//     setTimeout(function() {
+//             geocode("8450 N Interstate 35, San Antonio, TX 78239", mapboxToken).then(function(result) {
+//                 console.log(result);
+//                 map.setCenter(result);
+//                 map.setZoom(18);
+//             });
+//         },10000);
+//     setTimeout(function() {
+//         var marker = new mapboxgl.Marker()
+//             .setLngLat([-98.396004, 29.513805]);
+//         var buffsPopup = new mapboxgl.Popup()
+//             .setHTML("<p>Buffalo Wild Wings</p>");
+//         marker.setPopup(buffsPopup);
+//     },12000);
+// // THIRD RESTAURANT
+//     setTimeout(function() {
+//         geocode("13830 IH 35 N, Live Oak, TX 78233", mapboxToken).then(function(result) {
+//             console.log(result);
+//             map.setCenter(result);
+//             map.setZoom(18);
+//         });
+//     },15000);
+//     setTimeout(function() {
+//         var marker = new mapboxgl.Marker()
+//             .setLngLat([-98.335528, 29.564586])
+//             .addTo(map);
+//         var txRoadhouse = new mapboxgl.Popup()
+//             .setHTML("<p>Texas Roadhouse</p>");
+//         marker.setPopup(txRoadhouse);
+//     },17000);
+    var restaraunts = [
+        {
+            name: "Burgers & Shakes",
+            location:"7401 Collins Ave #2713, Miami Beach, FL 33141"
+        },
+        {
+            name: "Buffalo Wild Wings",
+            location:"8450 N Interstate 35, San Antonio, TX 78239"
+        },
+        {
+            name:"Texas Roadhouse",
+            location:"13830 IH 35 N, Live Oak, TX 78233"
+        }
+    ];
+    restaraunts.forEach(function(restaraunt) {
+        geocode(restaraunt.location, mapboxToken).then(function(coordinates) {
+            console.log(restaraunt.name, coordinates);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map);
+            var popUp = new mapboxgl.Popup()
+                .setHTML(restaraunt.name)
+            ;
+            marker.setPopup(popUp)
+        });
+    });
+</script>
+</body>
+</html>
