@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Exercise 1</title>
+    <title>Mini Exercise 3</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         #map {
@@ -12,7 +12,6 @@
     </style>
 </head>
 <body>
-<h1>My First Mapbox Map!</h1>
 <div id='map'></div>
 
 
@@ -24,12 +23,17 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         zoom: 10,
-        center: [-98.4916, 29.4252]
+        center: [-77.0369, 38.9072]
     });
-    setTimeout(function() {
-        map.setStyle('mapbox://styles/mapbox/satellite-v9');
-        map.setZoom(3);
-    },5000);
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-77.045, 38.8893])
+        .addTo(map);
+
+    var lincolnPopup = new mapboxgl.Popup()
+        .setHTML("<p>Lincoln Memorial</p>");
+
+    marker.setPopup(lincolnPopup);
+
 </script>
 </body>
 </html>

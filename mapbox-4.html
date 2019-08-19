@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Exercise 1</title>
+    <title>Mini Exercise 4</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         #map {
@@ -12,12 +12,10 @@
     </style>
 </head>
 <body>
-<h1>My First Mapbox Map!</h1>
 <div id='map'></div>
-
-
 <script src="js/keys.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
 <script>
     mapboxgl.accessToken = mapboxToken;
     var map = new mapboxgl.Map({
@@ -26,10 +24,29 @@
         zoom: 10,
         center: [-98.4916, 29.4252]
     });
+
     setTimeout(function() {
-        map.setStyle('mapbox://styles/mapbox/satellite-v9');
-        map.setZoom(3);
+        geocode("Whitefish, Montana", mapboxToken).then(function(result) {
+            console.log(result);
+            map.setCenter(result);
+            map.setZoom(10);
+        });
     },5000);
+
+// REVERSE GEOCODING
+
+    var accessToken = mapboxToken;
+    mapboxgl.accessToken = accessToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4916, 29.4252]
+    });
+
+    reverseGeocode({lng: -157.8060, lat: 21.2620}, accessToken).then(function(results) {
+        console.log(results);
+    });
 </script>
 </body>
 </html>
