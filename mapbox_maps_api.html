@@ -13,6 +13,12 @@
 </head>
 <body>
 <div id='map'></div>
+<select name="zoomPreference">
+    <option>State View</option>
+    <option>City View</option>
+    <option selected>Neighborhood View</option>
+    <option>Street View</option>
+</select>
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="js/mapbox-geocoder-utils.js"></script>
@@ -75,15 +81,18 @@
     var restaraunts = [
         {
             name: "Burgers & Shakes",
-            location:"7401 Collins Ave #2713, Miami Beach, FL 33141"
+            location:"7401 Collins Ave #2713, Miami Beach, FL 33141",
+            info:"Laid-back digs for varied burgers, hot dogs & desserts, plus a long list of beer & wine choices."
         },
         {
             name: "Buffalo Wild Wings",
-            location:"8450 N Interstate 35, San Antonio, TX 78239"
+            location:"8450 N Interstate 35, San Antonio, TX 78239",
+            info:"Buffalo Wild Wings is an American casual dining restaurant and sports bar franchise."
         },
         {
             name:"Texas Roadhouse",
-            location:"13830 IH 35 N, Live Oak, TX 78233"
+            location:"13830 IH 35 N, Live Oak, TX 78233",
+            info:"Texas Roadhouse is an American chain restaurant that specializes in steaks and promotes a Western theme."
         }
     ];
     restaraunts.forEach(function(restaraunt) {
@@ -93,10 +102,14 @@
                 .setLngLat(coordinates)
                 .addTo(map);
             var popUp = new mapboxgl.Popup()
-                .setHTML(restaraunt.name)
+                .setHTML("<strong>" + restaraunt.name + "</strong><br>" +
+                restaraunt.info)
             ;
             marker.setPopup(popUp)
         });
+    select.addEventListener('change', function() {
+        map.setZoom(select.value)
+    });
     });
 </script>
 </body>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Exercise</title>
+</head>
+<body>
+<header>
+    <h1 id="title">Hello world!</h1>
+</header>
+<div id="par1">
+    <h1 id="para1">Paragraph 1</h1>
+    <p class="codeup">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium doloremque ex, illo praesentium sunt
+        temporibus ut. Autem beatae cupiditate delectus, dignissimos dolore dolores eveniet laborum officia placeat,
+        quasi, recusandae sed. Amet asperiores deserunt doloribus dolorum eius, enim id rem, repellendus repudiandae
+        velit voluptate voluptatem voluptatum? Accusamus accusantium amet cupiditate distinctio dolorum eligendi,
+        exercitationem impedit ipsam laboriosam similique sit veniam, voluptas!
+    </p>
+</div>
+<div class="par2">
+    <h1 id="para2">Paragraph 2</h1>
+    <p class="codeup">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At beatae deleniti fugit nostrum numquam officia
+        provident, sunt! Accusamus blanditiis corporis cumque dignissimos explicabo nisi provident sint sunt temporibus
+        veritatis! Deleniti. Alias architecto aut deleniti dignissimos distinctio dolor dolore eum excepturi, hic id in
+        labore modi nam numquam quam quas veniam. Exercitationem explicabo harum maxime molestiae, nam nemo nobis nulla
+        tempora.
+    </p>
+</div>
+<div>
+    <h1 id="para3">Paragraph 3</h1>
+    <p class="codeup">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eius, fugiat in ipsum nam reiciendis! Aliquid amet
+        dolorum exercitationem explicabo harum ipsum laudantium nisi pariatur quam quasi! Et, ipsam perspiciatis.
+        Doloribus eos excepturi fuga illum nihil nostrum nulla quasi repellat repudiandae voluptas. Debitis, delectus
+        harum illo, in, ipsam labore laudantium nam non quae quibusdam quod repellat saepe similique totam veritatis?
+    </p>
+</div>
+<ul class="testList">
+    <li id="listItem1">List Item 1</li>
+    <li id="listItem2">List Item 2</li>
+    <li id="listItem3">List Item 3</li>
+    <li>List Item 4</li>
+    <li>List Item 5</li>
+    <li>List Item 6</li>
+</ul>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        alert($('h1').html());
+        $('body').css('background-color','black');
+        $('.testList').css('color','gray');
+        $('#listItem1').css('color','red');
+        $('#listItem2').css('color','white');
+        $('#listItem3').css('color','blue');
+        $('.codeup').css('border', '1px solid red');
+        $('li').css('font-size','20px');
+        // $('p').css('background-color','MediumSlateBlue');
+        // $('h1').css('background-color','Indigo');
+        $('h1, p, li').css('background-color','MediumSlateBlue');
+    });
+</script>
+</body>
+</html>
