@@ -76,6 +76,48 @@
         recommended).</dd>
 </dl>
 <button id="toggleLink" type="button">Click to Reveal Answers!</button>
+<hr>
+
+<div>
+    <h3>Big Bend National Park</h3>
+<ul>
+    <li>The Rio Grande River runs through Big Bend National Park. The park is named Big Bend after the river's big bend
+        in west Texas.</li>
+    <li>There are more species of birds found in Big Bend National Park than in any other national park in the U.S.
+        There are over 450 different species.</li>
+    <li>Approximately 118 miles of the Big Bend National Park border run along the international border between the
+        United States and Mexico.</li>
+    <li>There are more than 3600 species of insects found in Big Bend National Park.</li>
+</ul>
+</div>
+
+<div>
+    <h3>Zion National Park</h3>
+    <ul>
+        <li>Humans have been living in Zion Canyon for at least 8,000 years.</li>
+        <li>There are four life zones in the park including: desert, Coniferous forest, woodland and riparian.</li>
+        <li>There are abandoned cliff houses and rock art in the park that were left behind by the Anasazi people 800
+            to 1,500 years ago.</li>
+        <li>The park usually receives the most rain in March. It is common for thunderstorms to occur from the middle
+            of July to the middle of September.</li>
+    </ul>
+</div>
+
+<div>
+    <h3>Grand Canyon National Park</h3>
+    <ul>
+        <li>The Grand Canyon is bigger than the state of Rhode Island. The Grand Canyon is a mile deep, 277 miles long
+            and 18 miles wide. While the park doesn’t include the entire canyon, it does measure in at a whopping 1,904
+            square miles in total. In comparison, Rhode Island is around 1,212 square miles.</li>
+        <li>Hidden caves abound in the canyon. Tucked within the Grand Canyon are an estimated 1,000 caves, and of
+            those, 335 have been recorded. Even fewer have been mapped or inventoried.</li>
+        <li>The Grand Canyon was carved over some 6 million years. Geological activity and erosion by the Colorado
+            River created the Grand Canyon as we know it today.</li>
+        <li> The most dangerous animal in the park is the rock squirrel. Every year, dozens of visitors are bitten when
+            they try to feed these animals.</li>
+    </ul>
+</div>
+<button id="toggleListItems" type="button">Click to Make a Change!</button>
 <script src="js/jquery-2.2.4.js"></script>
 <script>
 $('#toggleLink').click(function() {
@@ -92,6 +134,19 @@ $('dt').click(function() {
     this.style.color = 'white';
 
 });
+$('#toggleListItems').click(function() {
+    $('ul').each(function() {
+        $(this).children().last().css('background-color', 'yellow');
+        });
+});
+$('h3').click(function() {
+    $(this).next().children().css('font-weight','bold');
+});
+$('li').click(function() {
+    $(this).parent().each(function() {
+        $(this).children().first().css('color', 'blue');
+    });
+})
 </script>
 </body>
 </html>
