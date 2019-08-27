@@ -3,8 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery FAQ</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+
+    </style>
 </head>
 <body>
+<h1>Yosemite National Park: 10 FAQ</h1>
+<dl>
+    <dt><h5>Why are animals so tame here? Can I feed them?</h5></dt>
+    <br>
+    <dd class="invisible">Animals in the park are wild, but many are accustomed to people because they have been fed so often. It is
+        illegal to feed any animal in the park. Feeding animals contributes to poor nutrition, ill health, and the
+        alteration of natural behavior patterns. Visitors who get close to or feed animals may also be bitten,
+        scratched, or otherwise injured, or may become ill. </dd>
+<br>
+<hr>
+    <dt><h5>How can I protect bears from my food (and my food from bears)?</h5></dt>
+    <br>
+    <dd class="invisible">Yosemite's bears are always searching for food and consider anything that looks or smells like food to be food.
+        Learn more about how to properly store your food while visiting Yosemite.</dd>
+<br>
+<hr>
+    <dt><h5>How can I protect myself from bears?</h5></dt>
+    <br>
+    <dd class="invisible">Black bears in Yosemite tend to avoid people and can be scared off. Learn what to do if you see a bear.</dd>
+<br>
+<hr>
+    <dt><h5>What is there to see in Yosemite?</h5></dt>
+    <br>
+    <dd class="invisible">Yosemite Valley, Wawona, Mariposa Grove, Hetch Hetchy, Waterfalls, Lakes & Rivers, and much more!</dd>
+<br>
+<hr>
+    <dt><h5>When do the Half Dome cables go up and come down?</h5></dt>
+    <br>
+    <dd class="invisible">The Half Dome cables are normally installed immediately before Memorial Day weekend, but this can vary depending
+        on conditions and trail crew availability. The cables usually remain up through Columbus Day (in October). A
+        permit is required to hike Half Dome. The National Park Service strongly discourages hikers from attempting the
+        cable route when the cables are down. Learn more about the Half Dome hike.</dd>
+<br>
+<hr>
+    <dt><h5>Where and when can I see Horsetail Fall, the waterfall that resembles the Firefall?</h5></dt>
+    <br>
+    <dd class="invisible">Horsetail Fall flows in winter and early spring, when snow is present on top of El Capitan.
+        On sunny afternoons in mid- to late February, the setting sun can cause it to glow orange.</dd>
+<br>
+<hr>
+    <dt><h5>Where can I see giant sequoias?</h5></dt>
+    <br>
+    <dd class="invisible">There are three giant sequoia groves in Yosemite National Park: the Mariposa Grove, the Tuolumne Grove, and the
+        Merced Grove.</dd>
+<br>
+<hr>
+    <dt><h5>Where and when can I see frazil ice?</h5></dt>
+    <br>
+    <dd class="invisible">Frazil ice forms along Yosemite Creek, and some other creeks in Yosemite Valley, most commonly in March and
+        April. The phenomenon is entirely weather-dependent, so it's difficult to know when exactly it may happen (or
+        if it will happen at all).</dd>
+<br>
+<hr>
+    <dt><h5>When is the best time of year to visit Yosemite?</h5></dt>
+    <br>
+    <dd class="invisible">It depends what you're looking for! While most people visit Yosemite during summer, there are advantages to
+        visiting throughout the year. </dd>
+<br>
+<hr>
+    <dt><h5>Can I drive my own vehicle into the park?</h5></dt>
+    <br>
+    <dd class="invisible">You can drive your own vehicle into and around Yosemite (shuttle buses are not mandatory, but are
+        recommended).</dd>
+</dl>
+<button id="toggleLink" type="button">Click to Reveal Answers!</button>
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+$('#toggleLink').click(function() {
+        $('dd').toggleClass('invisible');
+});
+//  OR
+// $(document).ready(function() {
+//     $('#toggleLink').click(function() {
+//         $('dd').toggleClass('invisible');
+//     });
+// });
+$('dt').click(function() {
+    this.style.backgroundColor = 'blue';
+    this.style.color = 'white';
 
+});
+</script>
 </body>
 </html>
