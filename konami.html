@@ -60,7 +60,7 @@
             }
             if (input === gtaKey) {
                 $('h1').html('SAN ANDREAS').css({'animation':'none','color':'white','font-family':'Saira Stencil One'});
-                $('#image').html('<img id="image" src="img/sanAndreas.jpg" />');
+                $('#image').html('<img id="image" src="img/sanAndreas.jpg" />').hide(0).fadeIn(3500);
                 $('#audio').html('<audio autoplay><source src="audio/sanAndreas.mov"></audio>');
                 $('body').css({'background-image':'url(img/gtaBG.jpg)','background-size': 'cover'});
                 input = ''
