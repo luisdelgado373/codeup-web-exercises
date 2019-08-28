@@ -7,10 +7,21 @@
         .invisible {
             visibility: hidden;
         }
+        .hidden {
+            display: none;
+        }
+        #registration {
+            display: none;
+        }
 
     </style>
 </head>
 <body>
+<h2 id="registration">Would you like to register to the website?</h2>
+<div>
+    <h1 id="newsLetter">Would you like to sign up for our newsletter?</h1>
+    <span id="toggleNewsLetter">X</span>
+</div>
 <h1>Yosemite National Park: 10 FAQ</h1>
 <dl>
     <dt><h5>Why are animals so tame here? Can I feed them?</h5></dt>
@@ -79,21 +90,21 @@
 <hr>
 
 <div>
-    <h3>Big Bend National Park</h3>
-<ul>
-    <li>The Rio Grande River runs through Big Bend National Park. The park is named Big Bend after the river's big bend
-        in west Texas.</li>
-    <li>There are more species of birds found in Big Bend National Park than in any other national park in the U.S.
-        There are over 450 different species.</li>
-    <li>Approximately 118 miles of the Big Bend National Park border run along the international border between the
-        United States and Mexico.</li>
-    <li>There are more than 3600 species of insects found in Big Bend National Park.</li>
-</ul>
+    <h3 id="toggleBigBend">Big Bend National Park</h3>
+    <ul class="hidden">
+        <li>The Rio Grande River runs through Big Bend National Park. The park is named Big Bend after the river's big bend
+            in west Texas.</li>
+        <li>There are more species of birds found in Big Bend National Park than in any other national park in the U.S.
+            There are over 450 different species.</li>
+        <li>Approximately 118 miles of the Big Bend National Park border run along the international border between the
+            United States and Mexico.</li>
+        <li>There are more than 3600 species of insects found in Big Bend National Park.</li>
+    </ul>
 </div>
 
 <div>
-    <h3>Zion National Park</h3>
-    <ul>
+    <h3 id="toggleZion">Zion National Park</h3>
+    <ul class="hidden">
         <li>Humans have been living in Zion Canyon for at least 8,000 years.</li>
         <li>There are four life zones in the park including: desert, Coniferous forest, woodland and riparian.</li>
         <li>There are abandoned cliff houses and rock art in the park that were left behind by the Anasazi people 800
@@ -104,8 +115,8 @@
 </div>
 
 <div>
-    <h3>Grand Canyon National Park</h3>
-    <ul>
+    <h3 id="toggleGrandCanyon">Grand Canyon National Park</h3>
+    <ul class="hidden">
         <li>The Grand Canyon is bigger than the state of Rhode Island. The Grand Canyon is a mile deep, 277 miles long
             and 18 miles wide. While the park doesn’t include the entire canyon, it does measure in at a whopping 1,904
             square miles in total. In comparison, Rhode Island is around 1,212 square miles.</li>
@@ -146,7 +157,21 @@ $('li').click(function() {
     $(this).parent().each(function() {
         $(this).children().first().css('color', 'blue');
     });
-})
+});
+$('#toggleNewsLetter').click(function(){
+   $('#newsLetter').parent().hide();
+});
+$('#toggleBigBend').click(function(){
+    $(this).next().slideToggle('.hidden');
+});
+$('#toggleZion').click(function(){
+    $(this).next().slideToggle('.hidden');
+});
+$('#toggleGrandCanyon').click(function(){
+    $(this).next().slideToggle('.hidden');
+});
+$('#registration').css({'color':'orange'});
+$('#registration').delay(8000).fadeIn(2500);
 </script>
 </body>
 </html>
