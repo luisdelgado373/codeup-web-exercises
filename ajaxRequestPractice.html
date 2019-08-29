@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Practice</title>
+</head>
+<body>
+
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    $.ajax({
+        type: "POST",
+        url: "https://hookb.in/6JMgnnrP7xt2Z20mG7ay",
+        data: JSON.stringify({
+            "name": "John"
+        }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            console.log("done.");
+        }
+    });
+
+</script>
+</body>
+</html>

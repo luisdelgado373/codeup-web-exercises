@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #111111;
+        }
+        .hidden {
+            display: none;
+            color: teal;
+        }
+        .content {
+
+        }
+        .card {
+            margin-bottom: 5em;
+            width: 50%;
+        }
+        .card-header {
+            background: red;
+        }
+        #posts {
+
+        }
+    </style>
+</head>
+<body>
+<div id="posts">
+
+</div>
+<button  id="hideCategories" type="button" class="btn btn-light">Show Categories</button>
+<script src="js/jquery-2.2.4.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+    $.ajax('data/blog.json').done(function(data) {
+        $('#posts').html(buildHTML(data));
+    });
+    function buildHTML(post) {
+        $.ajax("data/blog.json").done(function (data) {
+            var blogHTML = "";
+            data.forEach(function (blog) {
+                blogHTML += "<div class=card>";
+                blogHTML += "<div class=card-header>";
+                blogHTML += "<h3>" + blog.title + "</h3>";
+                blogHTML += "</div>";
+                blogHTML += "<div class=card-body>";
+                blogHTML += "<blockquote class=blockquote mb-0>";
+                blogHTML += "<p class='content'>" + blog.content + "</p>";
+                blogHTML += "<p class='hidden'>" + blog.categories + "</p>";
+                blogHTML += "</div>";
+                blogHTML += "<footer class=blockquote-footer>" + blog.date + "</footer>";
+                blogHTML += "</blockquote>";
+                blogHTML += "</div>";
+            });
+            $("#posts").html(blogHTML);
+        });
+    }
+    $('#hideCategories').click(function() {
+        $('.hidden').slideToggle('.hidden');
+    });
+</script>
+</body>
+</html>
