@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        body {
+            background-image: url("img/goldenHour.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            color: white;
+        }
+        #map {
+            margin: 1em 0;
+            width: 100%;
+            height: 500px;
+        }
+        #submit {
+            margin: 1em 0;
+        }
+        #userInput {
+            width: 100%;
+        }
+        .card-group {
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>The Weather Application™</h1>
+        <h3 id="city">San Antonio</h3>
+    </header>
+    <div class="card-group" id="weather"></div>
+    <input id="userInput"  class="form-control" type="text" placeholder="Search by City, State, or ZIP code">
+    <button id="submit" type="button" class="btn btn-primary">Submit</button>
+    <div id='map'></div>
+</div>
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/keys.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4936, 29.4241]
+    });
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([-98.4936, 29.4241])
+        .addTo(map);
+
+
+    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function(data) {
+
+        var weatherHTML = "";
+
+        for (var i = 0; i < 3; i++) {
+            var highTemp = data.daily.data[i].apparentTemperatureHigh;
+            var lowTemp = data.daily.data[i].apparentTemperatureLow;
+            var weather = data.daily.data[i];
+            var weatherIcon = data.daily.data[i].icon;
+            weatherHTML += "<div class=card>";
+            weatherHTML += "<div class=card-body>";
+            weatherHTML += "<h5 class=card-title><strong>High: </strong>" + highTemp + "˚ / <strong>Low: </strong>" + lowTemp + "˚</h5>";
+            weatherHTML += "<img class=card-text src='"+ icon(weatherIcons, weatherIcon) + "'>";
+            weatherHTML += "<p class=card-text><strong>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</strong></p>";
+            weatherHTML += "<p class=card-text><strong>" + weather.summary + "</strong></p>";
+            weatherHTML += "<p class=card-text><strong>Humidity: </strong>" + weather.humidity + "</p>";
+            weatherHTML += "<p class=card-text><strong>Wind: </strong>" + weather.windSpeed + "</p>";
+            weatherHTML += "<p class=card-text><strong>Pressure: </strong>" + weather.pressure + "</p>";
+            weatherHTML += "</div>";
+            weatherHTML += "</div>";
+        }
+        $('#weather').html(weatherHTML);
+    });
+
+    var weatherIcons = [
+        {
+            link: "img/SVG/Sun.svg",
+            name: "clear-day"
+        },{
+            link: "img/SVG/Moon.svg",
+            name: "clear-night"
+        },{
+            link: "img/SVG/Umbrella.svg",
+            name: "rain"
+        },{
+            link: "img/SVG/Snowflake.svg",
+            name: "snow"
+        },{
+            link: "img/SVG/Cloud-Hail-Sun.svg",
+            name: "sleet"
+        },{
+            link: "img/SVG/Wind.svg",
+            name: "wind"
+        },{
+            link: "img/SVG/Cloud-Fog.svg",
+            name: "fog"
+        },{
+            link: "img/SVG/Cloud.svg",
+            name: "cloudy"
+        },{
+            link: "img/SVG/Cloud-Sun.svg",
+            name: "partly-cloudy-day"
+        },{
+            link: "img/SVG/Cloud-Moon.svg",
+            name: "partly-cloudy-night"
+        }
+    ];
+
+    function icon(weatherIcons, weatherIcon) {
+        for (var i = 0; i < weatherIcons.length; i++) {
+            if (weatherIcons[i].name === weatherIcon) {
+                return weatherIcons[i].link;
+            }
+        }
+    }
+
+    function onDragEnd() {
+        var coordinates = marker.getLngLat();
+        var latitude = coordinates.lat.toString();
+        var longitude = coordinates.lng.toString();
+
+        $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ", " +longitude).done(function (data) {
+
+            var weatherHTML = "";
+
+            for (var i = 0; i < 3; i++) {
+                var highTemp = data.daily.data[i].apparentTemperatureHigh;
+                var lowTemp = data.daily.data[i].apparentTemperatureLow;
+                var weather = data.daily.data[i];
+                var weatherIcon = data.daily.data[i].icon;
+
+                weatherHTML += "<div class=card>";
+                weatherHTML += "<div class=card-body>";
+                weatherHTML += "<h5 class=card-title><strong>High: </strong>" + highTemp + "˚ / <strong>Low: </strong>" + lowTemp + "˚</h5>";
+                weatherHTML += "<img class=card-text src='"+ icon(weatherIcons, weatherIcon) + "'>";
+                weatherHTML += "<p class=card-text><strong>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</strong></p>";
+                weatherHTML += "<p class=card-text><strong>" + weather.summary + "</strong></p>";
+                weatherHTML += "<p class=card-text><strong>Humidity: </strong>" + weather.humidity + "</p>";
+                weatherHTML += "<p class=card-text><strong>Wind: </strong>" + weather.windSpeed + "</p>";
+                weatherHTML += "<p class=card-text><strong>Pressure: </strong>" + weather.pressure + "</p>";
+                weatherHTML += "</div>";
+                weatherHTML += "</div>";
+            }
+            $('#weather').html(weatherHTML);
+        });
+    }
+
+    marker.on('dragend', onDragEnd);
+
+        $('#submit').click(function() {
+            var location = $(userInput).val();
+
+            geocode(location , mapboxToken).then(function (result) {
+            var latitude = result[1].toString();
+            var longitude = result[0].toString();
+
+            $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ", " + longitude).done(function (data) {
+
+                var weatherHTML = "";
+
+                for (var i = 0; i < 3; i++) {
+                    var highTemp = data.daily.data[i].apparentTemperatureHigh;
+                    var lowTemp = data.daily.data[i].apparentTemperatureLow;
+                    var weather = data.daily.data[i];
+                    var weatherIcon = data.daily.data[i].icon;
+
+                    weatherHTML += "<div class=card>";
+                    weatherHTML += "<div class=card-body>";
+                    weatherHTML += "<h5 class=card-title><strong>High: </strong>" + highTemp + "˚ / <strong>Low: </strong>" + lowTemp + "˚</h5>";
+                    weatherHTML += "<img class=card-text src='"+ icon(weatherIcons, weatherIcon) + "'>";
+                    weatherHTML += "<p class=card-text><strong>" + weatherIcon.charAt(0).toUpperCase() + weatherIcon.slice(1,weatherIcon.length) + "</strong></p>";
+                    weatherHTML += "<p class=card-text><strong>" + weather.summary + "</strong></p>";
+                    weatherHTML += "<p class=card-text><strong>Humidity: </strong>" + weather.humidity + "</p>";
+                    weatherHTML += "<p class=card-text><strong>Wind: </strong>" + weather.windSpeed + "</p>";
+                    weatherHTML += "<p class=card-text><strong>Pressure: </strong>" + weather.pressure + "</p>";
+                    weatherHTML += "</div>";
+                    weatherHTML += "</div>";
+                }
+                $('#weather').html(weatherHTML);
+            });
+                map.flyTo({ center:result,zoom:10});
+                $('#city').html(location.charAt(0).toUpperCase() + location.slice(1,location.length));
+            marker.setLngLat([longitude, latitude])
+            });
+        });
+
+</script>
+</body>
+</html>

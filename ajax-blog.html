@@ -5,12 +5,9 @@
     <title>AJAX Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #111111;
-        }
         .hidden {
             display: none;
-            color: teal;
+            color: #E4A027;
         }
         .content {
 
@@ -18,12 +15,10 @@
         .card {
             margin-bottom: 5em;
             width: 50%;
+            border-color: #7FC0E2;
         }
         .card-header {
-            background: red;
-        }
-        #posts {
-
+            background: #247AC1;
         }
     </style>
 </head>
@@ -51,7 +46,7 @@
                 blogHTML += "<div class=card-body>";
                 blogHTML += "<blockquote class=blockquote mb-0>";
                 blogHTML += "<p class='content'>" + blog.content + "</p>";
-                blogHTML += "<p class='hidden'>" + blog.categories + "</p>";
+                blogHTML += "<p class='hidden'>" + blog.categories.join(", ") + "</p>";
                 blogHTML += "</div>";
                 blogHTML += "<footer class=blockquote-footer>" + blog.date + "</footer>";
                 blogHTML += "</blockquote>";
