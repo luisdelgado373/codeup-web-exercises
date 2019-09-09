@@ -39,7 +39,7 @@ const users = [
 let moreThan3 = users.filter((user) => user.languages.length >= 3);
 // console.log(moreThan3);
 
-emails = users.map((user) => user.email.toString());
+const emails = users.map((user) => user.email);
 // console.log(emails);
 
 const yearsSum = users.reduce((total, user) => {
@@ -47,13 +47,43 @@ const yearsSum = users.reduce((total, user) => {
 }, 0);
 // console.log(yearsSum);
 
-// const userNames = users.reduce((total, user) => {
-//     return total + user.name.toString();
-// }, 0);
+const longestEmail = users.reduce((longest, user) => {
+   if (longest.length < user.email.length) {
+       longest = user.email;
+   }
+   return longest;
+}, "");
+// console.log(longestEmail);
+
+
+let userNames = users.reduce((instructor, user, i) => {
+    if(i < users.length -1) {
+        instructor += user.name + ", ";
+    } else {
+        instructor += `and ${user.name}.`
+    }
+    return instructor
+    },"Your instructors are: ");
 // console.log(userNames);
 
+const langs = users.reduce((listOfLangs, user) => {
+    for (const lang of user.languages) {
+        if (listOfLangs.indexOf(lang) === -1) {
+            listOfLangs.push(lang);
+        }
+    }
+    return listOfLangs;
+}, []);
+// console.log(langs);
 
-let userNames = users.reduce((finalString, person) => finalString + `${person.name}`, "");
-console.log(userNames);
+// let currentLangList = users.map(user => user.languages)
+
+let listOfLangs = users.reduce((accumulator, user) => {
+   user.languages.map(language => accumulator.push(language));
+   return accumulator;
+}, []);
+listOfLangs = new Set(listOfLangs);
+listOfLangs = Array.from(listOfLangs);
+console.log(listOfLangs);
 
 // node map-filter-reduce.js
